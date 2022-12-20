@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #e9c46a;
+  width: 600px;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-content: center;
+}
+
+.column {
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+}
+
+.sub-cell-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-content: start;
+  border: 1px solid #264653;
+}
+
+.sub-cell {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  margin: 2px;
+}
+
+.sub-cell:hover {
+  transform: scale(2, 2);
+  transition-duration: 200ms;
+}
+
+.cell:nth-child(10n) {
+  flex-basis: 100%;
+}
+
+img {
+  object-fit: fill;
+}

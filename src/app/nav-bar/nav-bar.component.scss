@@ -1,0 +1,38 @@
+$nav-margin: 20px;
+
+ul {
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-evenly;
+  background-color: #e9c46a;
+  width: calc(100% - (2 * $nav-margin));
+  margin: $nav-margin;
+  padding: 0 10px 0 10px;
+  position: fixed;
+}
+
+li a {
+  display: block;
+  width: 150px;
+  border-radius: 5px;
+  background-color: #f4a261;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: antiquewhite;
+  font-family: Arial;
+  margin: 10px;
+  font-weight: bold;
+}
+
+li a:hover {
+  transition: background-color 500ms;
+  background-color: #e76f51;
+}
+
+
+
+
