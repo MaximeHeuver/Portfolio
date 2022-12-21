@@ -1,0 +1,76 @@
+@import "src/styles.scss";
+
+button + button {
+  margin-left: 30px;
+}
+
+button {
+  border-radius: 10px;
+  width: 100px;
+  height: 50px;
+  border: none;
+  font-family: Arial;
+  font-weight: bold;
+  background-color: $secondary-color;
+  color: $background-color;
+}
+
+button:hover {
+  transition: background-color 500ms;
+  background-color: $prussian-blue;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $primary-color;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-content: center;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  width: max-content;
+  height: max-content;
+}
+
+.input-container {
+  flex-direction: column;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+}
+
+.sub-cell-container {
+  width: inherit;
+  height: inherit + 1px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  border: 1px solid $prussian-blue;
+}
+
+.sub-cell {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  margin: 2px;
+}
+
+.sub-cell:hover {
+  transform: scale(2, 2);
+  transition-duration: 200ms;
+}
+
+.cell:nth-child(10n) {
+  flex-basis: 100%;
+}
+
+img {
+  object-fit: fill;
+}

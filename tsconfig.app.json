@@ -7,7 +7,7 @@
   },
   "files": [
     "src/main.ts",
-    "src/app/pages/algorithms/wave-function-collapse-service/wave-function-collpase.data.ts"
+    "src/app/pages/algorithms/wave-function-collapse/wave-function-collpase.data.ts"
   ],
   "include": [
     "src/**/*.d.ts"

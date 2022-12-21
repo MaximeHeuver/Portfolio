@@ -1,19 +1,5 @@
 <div class="background">
   <h1>ALGORITHMS</h1>
 
-  <div class="container">
-    <div *ngFor="let column of grid; let i = index;" class="column">
-      <div *ngFor="let cell of column; let j = index;" class="cell">
-        <img *ngIf="cell.isCollapsed; else unCollapsed" src="{{cell.collapsedState.imageSrc}}">
-
-        <ng-template #unCollapsed>
-          <div class="sub-cell-container">
-            <div *ngFor="let possibleState of cell.possibleStates" class="sub-cell" (click)="choosePossibleValue(possibleState, i, j)">
-              <img src="{{possibleState.imageSrc}}">
-            </div>
-          </div>
-        </ng-template>
-      </div>
-    </div>
-  </div>
+  <app-wave-function-collapse></app-wave-function-collapse>
 </div>

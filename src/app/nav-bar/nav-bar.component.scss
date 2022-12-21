@@ -1,4 +1,6 @@
 $nav-margin: 20px;
+@import "src/styles.scss";
+
 
 ul {
   border-radius: 20px;
@@ -7,7 +9,7 @@ ul {
   flex-wrap: wrap;
   list-style-type: none;
   justify-content: space-evenly;
-  background-color: #e9c46a;
+  background-color: $primary-color;
   width: calc(100% - (2 * $nav-margin));
   margin: $nav-margin;
   padding: 0 10px 0 10px;
@@ -18,11 +20,11 @@ li a {
   display: block;
   width: 150px;
   border-radius: 5px;
-  background-color: #f4a261;
+  background-color: $secondary-color;
   padding: 10px;
   text-align: center;
   text-decoration: none;
-  color: antiquewhite;
+  color: $background-color;
   font-family: Arial;
   margin: 10px;
   font-weight: bold;
@@ -30,7 +32,7 @@ li a {
 
 li a:hover {
   transition: background-color 500ms;
-  background-color: #e76f51;
+  background-color: $prussian-blue;
 }
 
 

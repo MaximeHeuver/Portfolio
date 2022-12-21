@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AlgorithmsComponent } from './pages/algorithms/algorithms.component';
 import { AboutComponent } from './pages/about/about.component';
+import { WaveFunctionCollapseComponent } from './pages/algorithms/wave-function-collapse/wave-function-collapse.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { AboutComponent } from './pages/about/about.component';
     HomeComponent,
     NavBarComponent,
     AlgorithmsComponent,
-    AboutComponent
+    AboutComponent,
+    WaveFunctionCollapseComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
