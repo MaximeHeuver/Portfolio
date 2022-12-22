@@ -1,0 +1,5 @@
+<div class="select-wrapper">
+  <select #ref (change)="emitValueChange(ref.value)">
+    <option *ngFor="let value of values" value="{{value}}">{{value | titlecase}}</option>
+  </select>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Cell, PossibleState} from "./wave-function-collpase.data";
+import {PossibleStateFactory} from "./wave-function-collapse.possibility-factory";
 
 @Component({
   selector: 'app-wave-function-collapse',
@@ -7,13 +8,15 @@ import {Cell, PossibleState} from "./wave-function-collpase.data";
   styleUrls: ['./wave-function-collapse.component.scss']
 })
 export class WaveFunctionCollapseComponent {
-  public gridSize: number = 10;
+  public gridSize: number = 15;
   public grid: Cell[][] = [];
   public allCells: Cell[] = [];
-  private border: Cell = new Cell(-1, -1);
+  public tileTypes: string[] = ["pipes", "dogs"];
+  private currentPossibleStateType: string = "pipes";
+  private border: Cell = new Cell(-1, -1, PossibleStateFactory.getAllPossibilities(this.currentPossibleStateType));
 
   constructor() {
-    this.initWaveFunctionCollapse()
+    this.initWaveFunctionCollapse(this.currentPossibleStateType)
   }
 
   public collapseAll() {
@@ -22,29 +25,52 @@ export class WaveFunctionCollapseComponent {
     }
   }
 
-  resetGrid() {
-    this.initWaveFunctionCollapse()
+  public resetGrid() {
+    this.initWaveFunctionCollapse(this.currentPossibleStateType)
+  }
+
+  public collapseCell(collapseState: PossibleState, col: number, row: number) {
+    this.grid[col][row].collapse(collapseState)
+  }
+
+  public changeTileType(type: string) {
+    this.currentPossibleStateType = type;
+    this.resetGrid();
   }
 
   private collapseLowesEntropyCell() {
-    let minimumPossibleStates = Math.min(...this.allCells.filter(cell => !cell.isCollapsed).map(cell => cell.possibleStates.length))
+    //find cell with the least possible states
+    let minimumPossibleStates = Math.min(...this.allCells
+      .filter(cell => !cell.isCollapsed)
+      .map(cell => cell.possibleStates.length))
 
     let cellToCollapse: Cell = this.allCells
       .filter(cell => cell.possibleStates.length == minimumPossibleStates)[0]
 
-    let possibleStates = cellToCollapse.possibleStates;
-    let collapsedState = possibleStates[Math.floor(Math.random() * possibleStates.length)];
+    //choose weighted random
+    let collapsedState: PossibleState =
+      this.getWeightedRandomPossibleState(cellToCollapse.possibleStates);
 
+    //let possibleStates = cellToCollapse.possibleStates;
+    //let collapsedState = possibleStates[Math.floor(Math.random() * possibleStates.length)];
+
+    //collapse
     cellToCollapse.collapse(collapsedState);
   }
 
-  private initWaveFunctionCollapse() {
+  private getWeightedRandomPossibleState(possibleStates: PossibleState[]) {
+    return new PossibleState("",1, [1,1,1,1])
+  }
+
+  private initWaveFunctionCollapse(possibleStateType: string) {
+    let allPossibleStates = PossibleStateFactory.getAllPossibilities(possibleStateType);
+
     //instantiate and fill grid
     for (let i = 0; i < this.gridSize; i++) {
       this.grid[i] = [];
 
       for (let j = 0; j < this.gridSize; j++) {
-        let cell = new Cell(i, j)
+        let cell = new Cell(i, j, allPossibleStates)
         this.grid[i][j] = cell;
         this.allCells.push(cell);
       }
@@ -67,9 +93,5 @@ export class WaveFunctionCollapseComponent {
         ]
       }
     }
-  }
-
-  collapseCell(collapseState: PossibleState, col: number, row: number) {
-    this.grid[col][row].collapse(collapseState)
   }
 }

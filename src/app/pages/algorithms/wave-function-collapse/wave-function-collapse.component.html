@@ -2,25 +2,27 @@
 <h2>wave function collapse</h2>
 <p>Wave function collapse is an algorithm where...</p>
 
+<div class="container input-container">
+  <app-dropdown [values]="tileTypes" (eventEmitter)="changeTileType($event)"></app-dropdown>
+  <app-slider></app-slider>
+  <div>
+    <button (click)="collapseAll()">COLLAPSE</button>
+    <button (click)="resetGrid()">RESET</button>
+  </div>
+</div>
+
 <div class="container grid-container">
   <div *ngFor="let column of grid; let col = index;" class="column">
     <div *ngFor="let cell of column; let row = index;" class="cell">
-      <img *ngIf="cell.isCollapsed; else unCollapsed" src="{{cell.collapsedState.imageSrc}}">
+      <img *ngIf="cell.isCollapsed; else unCollapsed" src="{{cell.collapsedState.imageSrc}}" alt="">
 
       <ng-template #unCollapsed>
         <div class="sub-cell-container">
           <div *ngFor="let possibleState of cell.possibleStates" class="sub-cell" (click)="collapseCell(possibleState, col, row)">
-            <img src="{{possibleState.imageSrc}}">
+            <img src="{{possibleState.imageSrc}}" alt="">
           </div>
         </div>
       </ng-template>
     </div>
-  </div>
-</div>
-<div class="container input-container">
-  <app-slider><!--(eventEmitter)="changeSomething()"--></app-slider>
-  <div>
-    <button (click)="collapseAll()">COLLAPSE</button>
-    <button (click)="resetGrid()">RESET</button>
   </div>
 </div>
