@@ -10,6 +10,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { WaveFunctionCollapseComponent } from './pages/algorithms/wave-function-collapse/wave-function-collapse.component';
 import { SliderComponent } from './reusable-components/slider/slider.component';
 import { DropdownComponent } from './reusable-components/dropdown/dropdown.component';
+import { MazeGenerationComponent } from './pages/algorithms/maze-generation/maze-generation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DropdownComponent } from './reusable-components/dropdown/dropdown.compo
     AboutComponent,
     WaveFunctionCollapseComponent,
     SliderComponent,
-    DropdownComponent
+    DropdownComponent,
+    MazeGenerationComponent
   ],
   imports: [
     BrowserModule,

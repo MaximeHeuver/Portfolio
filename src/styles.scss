@@ -1,8 +1,9 @@
-$orange: #ea7129;
+$text-color: #ea7129;
+$button-text-color: #f1faeeff;
 $background-color: #f1faeeff;
-$primary-color: #a8dadcff;
-$secondary-color: #457b9dff;
-$prussian-blue: #1d3557ff;
+$block-color: #a8dadcff;
+$button-color: #457b9dff;
+$button-active-color: #1d3557ff;
 
 body {
   margin: 0;
@@ -10,24 +11,24 @@ body {
 
 h1 {
   font-family: Arial;
-  color: $orange;
+  color: $text-color;
   text-align: center;
 }
 
 h2 {
   font-family: Arial;
-  color:$orange;
+  color: $text-color;
   text-align: center;
 }
 
 p {
   font-family: Arial;
-  color: $orange;
+  color: $text-color;
   text-align: center;
 }
 
 .background {
-  height: 100%;
+  height: fit-content;
   min-height: 1000px;
   background-color: $background-color;
   padding-top: 100px;

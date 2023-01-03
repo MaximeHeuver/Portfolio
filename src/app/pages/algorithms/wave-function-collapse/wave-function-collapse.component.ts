@@ -39,27 +39,28 @@ export class WaveFunctionCollapseComponent {
   }
 
   private collapseLowesEntropyCell() {
-    //find cell with the least possible states
+    let cellToCollapse: Cell = this.getLowestEntropyCell();
+
+    let collapsedState: PossibleState =
+      this.getWeightedRandomPossibleState(cellToCollapse.possibleStates);
+
+    cellToCollapse.collapse(collapsedState);
+  }
+
+  private getLowestEntropyCell() {
     let minimumPossibleStates = Math.min(...this.allCells
       .filter(cell => !cell.isCollapsed)
       .map(cell => cell.possibleStates.length))
 
-    let cellToCollapse: Cell = this.allCells
-      .filter(cell => cell.possibleStates.length == minimumPossibleStates)[0]
-
-    //choose weighted random
-    let collapsedState: PossibleState =
-      this.getWeightedRandomPossibleState(cellToCollapse.possibleStates);
-
-    //let possibleStates = cellToCollapse.possibleStates;
-    //let collapsedState = possibleStates[Math.floor(Math.random() * possibleStates.length)];
-
-    //collapse
-    cellToCollapse.collapse(collapsedState);
+    return this.allCells.filter(cell => cell.possibleStates.length == minimumPossibleStates)[0]
   }
 
   private getWeightedRandomPossibleState(possibleStates: PossibleState[]) {
-    return new PossibleState("",1, [1,1,1,1])
+    let a = possibleStates[Math.floor(Math.random() * possibleStates.length)];
+
+    //TODO add weight
+
+    return a;
   }
 
   private initWaveFunctionCollapse(possibleStateType: string) {
